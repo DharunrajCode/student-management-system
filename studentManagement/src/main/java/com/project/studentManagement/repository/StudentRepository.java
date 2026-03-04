@@ -1,5 +1,9 @@
 package com.project.studentManagement.repository;
 
-public class StudentRepository {
+import org.springframework.data.jpa.repository.JpaRepository;
+
+import com.project.studentManagement.entity.Student;
+
+public interface StudentRepository extends JpaRepository<Student, Integer>{
 
 }
