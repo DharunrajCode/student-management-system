@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.project.studentManagement.dto.StudentDto;
@@ -24,7 +25,7 @@ public class StudentController {
 	private StudentServiceImpl studentServiceImpl;
 
 	@PostMapping
-	public ResponseEntity<StudentDto> createStudent(StudentDto studentDto) {
+	public ResponseEntity<StudentDto> createStudent(@RequestBody StudentDto studentDto) {
 		StudentDto saved = studentServiceImpl.createStudent(studentDto);
 		return new ResponseEntity<>(saved, HttpStatus.CREATED);
 	}
@@ -35,19 +36,19 @@ public class StudentController {
 		return new ResponseEntity<List<StudentDto>>(students, HttpStatus.CREATED);
 	}
 	
-	@GetMapping("{/id}")
+	@GetMapping("/{id}")
 	public ResponseEntity<StudentDto> getStudent(@PathVariable Integer id){
 		StudentDto student = studentServiceImpl.getStudentById(id);
 		return new ResponseEntity<StudentDto>(student, HttpStatus.CREATED);
 	}
 	
-	@PutMapping("{/id}")
+	@PutMapping("/{id}")
 	public ResponseEntity<StudentDto> updateStudent(@PathVariable Integer id, @PathVariable StudentDto studentDto){
 		StudentDto updated = studentServiceImpl.updateStudent(id, studentDto);
 		return new ResponseEntity<StudentDto>(updated, HttpStatus.OK);
 	}
 	
-	@DeleteMapping("{/id}")
+	@DeleteMapping("/{id}")
 	public ResponseEntity<String> deleteStudent(@PathVariable Integer id){
 		studentServiceImpl.deleteStudent(id);
 		return new ResponseEntity<String>("Student Deleted Successfully", HttpStatus.OK);

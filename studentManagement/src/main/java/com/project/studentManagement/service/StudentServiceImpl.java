@@ -19,12 +19,15 @@ public class StudentServiceImpl implements StudentService {
 	@Autowired
 	private StudentRepository studentRepository;
 	
+	@Autowired
 	private ModelMapper modelMapper;
 
 	@Override
 	public StudentDto createStudent(StudentDto studentDto) {
 		// TODO Auto-generated method stub
 		Student s = modelMapper.map(studentDto, Student.class);
+		
+		System.out.println(studentDto.getName());
 		
 		Student saved = studentRepository.save(s);
 		
