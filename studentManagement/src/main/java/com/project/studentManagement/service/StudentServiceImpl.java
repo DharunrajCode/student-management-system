@@ -1,7 +1,6 @@
 package com.project.studentManagement.service;
 
 import java.util.List;
-import java.util.Optional;
 import java.util.stream.Collectors;
 
 import org.modelmapper.ModelMapper;
@@ -56,7 +55,7 @@ public class StudentServiceImpl implements StudentService {
 	@Override
 	public void deleteStudent(Integer id) {
 		// TODO Auto-generated method stub
-		Student s = studentRepository.findById(id)
+		studentRepository.findById(id)
 				.orElseThrow(() -> new ResourceNotFoundException("Student Not Found"));
 		
 		studentRepository.deleteById(id);
