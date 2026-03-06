@@ -8,6 +8,7 @@ Spring Boot REST API for managing student records.
 - Spring Data JPA
 - MySQL
 - ModelMapper
+- Aspect Oriented Programming
 
 ## Features
 - Create Student
